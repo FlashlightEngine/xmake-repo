@@ -31,5 +31,5 @@ package("fastgltf")
     end)
 
     on_test(function (package)
-        assert(package:has_cxxtypes("fastgltf::Parser", {configs = {languages = "c++" .. package:config("cxx_standard")}, includes = "fastgltf/core.hpp"}))
+        assert(package:has_cxxtypes("fastgltf::Parser", {configs = {languages = "c++" .. package:config("cxx_standard")}, includes = "fastgltf/parser.hpp"}))
     end)
