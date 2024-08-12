@@ -1,0 +1,13 @@
+package("FLUtils")
+    set_kind("library", {headeronly = true})
+    set_homepage("https://github.com/Pixfri/FLUtils")
+    set_description("Header-only utilities for FlashlightEngine.")
+    set_license("MIT")
+
+    add_urls("1.0.0", "c33f608545d5528a8e288090431051066ed1756a")
+
+    set_policy("package.strict_compatibility", true)
+
+    on_install(function (package)
+        import("package.tools.xmake").install(package)
+    end)
