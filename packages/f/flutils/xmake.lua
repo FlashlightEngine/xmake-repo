@@ -6,6 +6,7 @@ package("flutils")
 
     add_urls("https://github.com/FlashlightEngine/FLUtils.git")
 
+    add_versions("1.1.0", "c597c52c76efbb8c7e3ae1d4ace3d6e18f51b989")
     add_versions("1.0.0", "c33f608545d5528a8e288090431051066ed1756a")
 
     set_policy("package.strict_compatibility", true)
