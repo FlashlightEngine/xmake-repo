@@ -22,5 +22,5 @@ package("flutils")
                 u8 a = 1;
                 u32 b = Flashlight::Utils::ToU32<u8>(a);
             }
-        ]]}, {configs = {language = "c++20"}, includes = "FLUtils/"}))
+        ]]}, {configs = {language = "c++20"}, includes = "FLUtils/Helpers.hpp"}))
     end)
