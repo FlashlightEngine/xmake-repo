@@ -6,7 +6,7 @@ package("flutils")
 
     add_urls("https://github.com/FlashlightEngine/FLUtils.git")
 
-    add_versions("1.2.0", "d745a1e60f83a38b537789571c4a2104a35eeb9d")
+    add_versions("1.2.0", "7562d6a5dda0111a7ce4e6fcb912573e358cf13f")
     add_versions("1.1.0", "c597c52c76efbb8c7e3ae1d4ace3d6e18f51b989")
     add_versions("1.0.0", "c33f608545d5528a8e288090431051066ed1756a")
 
@@ -19,8 +19,8 @@ package("flutils")
     on_test(function (package)
         assert(package:check_cxxsnippets({test = [[
             void test() {
-                u8 a = 1;
-                u32 b = Flashlight::Utils::ToU32<u8>(a);
+                Flashlight::Utils::u8 a = 1;
+                Flashlight::Utils::u32 b = Flashlight::Utils::ToU32<u8>(a);
             }
         ]]}, {configs = {language = "c++20"}, includes = "FLUtils/Helpers.hpp"}))
     end)
