@@ -15,3 +15,11 @@ package("flutils")
     on_install(function (package)
         import("package.tools.xmake").install(package)
     end)
+
+    on_test(function (package)
+        assert(package:check_cxxsnippets({test = [[
+            void test() {
+                u8 a = 1;
+                u32 b = Flashlight::Utils::ToU32<u8>(a);
+            }
+        ]]}, {configs = {language = "c++20"}, includes = "FLUtils/"})))
