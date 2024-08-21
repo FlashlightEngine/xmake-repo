@@ -6,7 +6,7 @@ package("flashlightengine")
 
     add_urls("https://github.com/FlashlightEngine/FlashlightEngine.git")
 
-    add_versions("2024.08.21", "53fd8b4086cf457ebbbb0cf77d7c95900f08f949")
+    add_versions("2024.08.21", "25d2917efb2d493e86265a991977d4fad853a36d")
 
     add_deps("flutils")
     add_deps("volk 1.3.290+0", "vk-bootstrap v1.3.290", "vulkan-memory-allocator v3.1.0", 
