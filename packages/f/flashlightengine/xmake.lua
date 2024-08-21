@@ -15,6 +15,63 @@ package("flashlightengine")
 
     add_configs("shared", {description = "Build the engine as a shared library.", default = true, type = "boolean"})
 
+    on_fetch(function (package, opt)
+        if not opt.system then
+            return
+        end
+
+        local flengine = os.getenv("FL_ENGINE_PATH")
+        if not flengine or not os.isdir(flengine) then
+            return
+        end
+
+        local mode
+        if package:is_debug() then
+            mode = "debug"
+        elseif package:config("symbols") then
+            mode = "releasedbg"
+        else
+            mode = "release"
+        end
+
+        local versions = package:versions()
+        table.sort(versions, function (a, b) return a > b end)
+
+        local binFolder = string.format("%s_%s_%s", mode, package:plat(), package:arch())
+        local fetchInfo = {
+            version = versions[1] or os.date("%Y.%m.%d"),
+            sysincludedirs = { path.join(flengine, "include") },
+            linkdirs = path.join(flengine, "bin", binFolder),
+            components = {}
+        }
+        local baseComponent = {}
+        fetchInfo.components.__base = baseComponent
+        
+        if package:is_debug() then
+            fetchInfo.defines = table.join(fetchInfo.defines or {}, "FL_DEBUG")
+        end
+        for name, component in pairs(package:components()) do
+            fetchInfo.components[name] = {
+                links = component:get("links"),
+                syslinks = component:get("syslinks")
+            }
+        end
+        for _, componentname in pairs(package:components_orderlist()) do
+            local component = fetchInfo.components[componentname]
+            for k,v in pairs(component) do
+                fetchInfo[k] = table.join2(fetchInfo[k] or {}, v)
+            end
+        end
+
+        baseComponent.defines = fetchInfo.defines
+        baseComponent.linkdirs = fetchInfo.linkdirs
+        baseComponent.sysincludedirs = fetchInfo.sysincludedirs
+
+        package:set("policy", "package.librarydeps.strict_compatibility", false)
+
+        return fetchInfo
+    end)
+
     on_load(function (package)
         if not package:config("shared") then
             package:add("defines", "FL_STATIC")
