@@ -13,7 +13,7 @@ package("flashlightengine")
              "vulkan-utility-libraries v1.3.290", "glfw 3.4", "glm 1.0.1", "spdlog v1.9.0", "stb 2024.06.01")
     add_deps("imgui v1.91.0")
 
-    add_configs("shared", {description = "Build the engine as a shared library.", default true, type = "boolean"})
+    add_configs("shared", {description = "Build the engine as a shared library.", default = true, type = "boolean"})
 
     on_load(function (package)
         if not package:config("shared") then
