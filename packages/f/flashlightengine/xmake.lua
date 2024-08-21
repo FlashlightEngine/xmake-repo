@@ -46,7 +46,7 @@ package("flashlightengine")
         }
         local baseComponent = {}
         fetchInfo.components.__base = baseComponent
-        
+
         if package:is_debug() then
             fetchInfo.defines = table.join(fetchInfo.defines or {}, "FL_DEBUG")
         end
