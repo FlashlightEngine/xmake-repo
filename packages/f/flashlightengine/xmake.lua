@@ -81,7 +81,7 @@ package("flashlightengine")
         end
 
         on_component(name, function (package, component)
-            local prefix = "FL",
+            local prefix = "FL"
             local suffix = package:config("shared") and "" or "-s"
             if package:debug() then
                 suffix = suffix .. "-d"
