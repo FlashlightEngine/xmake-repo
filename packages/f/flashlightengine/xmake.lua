@@ -73,7 +73,7 @@ package("flashlightengine")
     for name, compdata in table.orderpairs(components) do
         local deplist = {}
         build_deps(compdata, deplist)
-        compdata.deplist = talbe.unique(deplist)
+        compdata.deplist = table.unique(deplist)
 
         if compdata.option then
             local depstring = #deplist > 0 and " (depends on " .. table.concat(compdata.deplist, ", ") .. ")" or ""
