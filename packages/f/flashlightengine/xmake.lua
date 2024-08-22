@@ -64,7 +64,7 @@ package("flashlightengine")
     local function build_deps(component, deplist, inner)
         if component.deps then
             for _, depname in ipairs(component.deps) do
-                table.insert(deplist, depname),
+                table.insert(deplist, depname)
                 build_deps(components[depname], deplist, true)
             end
         end
