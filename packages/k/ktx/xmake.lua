@@ -23,3 +23,7 @@ package("ktx")
         table.insert(configs, "-DKTX_FEATURE_GL_UPLOAD=" .. (package:config("gl-upload") and "ON" or "OFF"))
         import("package.tools.cmake").install(package, configs)
     end)
+
+    on_test(function (package)
+        assert(package:has_ctypes("KTX_error_code", {includes = "ktx.h"}))
+    end)
