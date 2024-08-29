@@ -5,7 +5,7 @@ package("ktx")
     add_urls("https://github.com/KhronosGroup/KTX-Software/archive/refs/tags/$(version).tar.gz", 
              "https://github.com/KhronosGroup/KTX-Software.git")
 
-    add_versions("4.3.2", "91ace88675ac59a97e55d0378a6602a9ae6b98bd")
+    add_versions("v4.3.2", "91ace88675ac59a97e55d0378a6602a9ae6b98bd")
 
     add_deps("cmake")
 
