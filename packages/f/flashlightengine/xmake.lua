@@ -21,7 +21,7 @@ package("flashlightengine")
     }
 
     for opt, policy in table.orderpairs(sanitizers) do
-        option(opt, {description = "Enable " .. opt, default = false})
+        option(opt, {description = "Enable " .. opt, default = false, type ="boolean"})
     
         if has_config(opt) then
             add_defines("FL_WITH_" .. opt:upper())
