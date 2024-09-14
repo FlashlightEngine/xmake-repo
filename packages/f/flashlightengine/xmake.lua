@@ -19,14 +19,29 @@ package("flashlightengine")
         lsan = "leak",
         tsan = "thread"
     }
-
-    for opt, policy in table.orderpairs(sanitizers) do
-        option(opt, {description = "Enable " .. opt, default = false, type ="boolean"})
     
-        if has_config(opt) then
-            add_defines("FL_WITH_" .. opt:upper())
-            set_policy("build.sanitizer." .. policy, true)
-        end
+    -- Asan
+    option("asan", {description = "Enable address sanitizer", default = false, type = "boolean"})
+
+    if has_config("asan") then
+        add_defines("FL_WITH_ASAN")
+        set_policy("build.sanitizer.asan", true)
+    end
+    
+    -- Lsan
+    option("lsan", {description = "Enable leak sanitizer", default = false, type = "boolean"})
+
+    if has_config("asan") then
+        add_defines("FL_WITH_LSAN")
+        set_policy("build.sanitizer.lsan", true)
+    end
+    
+    -- Tsan
+    option("tsan", {description = "Enable thread sanitizer", default = false, type = "boolean"})
+
+    if has_config("asan") then
+        add_defines("FL_WITH_TSAN")
+        set_policy("build.sanitizer.tsan", true)
     end
 
     on_install("windows", "mingw", "linux", function (package)
