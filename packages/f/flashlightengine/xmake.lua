@@ -21,7 +21,7 @@ package("flashlightengine")
     }
     
     -- Asan
-    option("asan", {description = "Enable address sanitizer", default = false, type = "boolean"})
+    add_configs("asan", {description = "Enable address sanitizer", default = false, type = "boolean"})
 
     if has_config("asan") then
         add_defines("FL_WITH_ASAN")
@@ -29,7 +29,7 @@ package("flashlightengine")
     end
     
     -- Lsan
-    option("lsan", {description = "Enable leak sanitizer", default = false, type = "boolean"})
+    add_configs("lsan", {description = "Enable leak sanitizer", default = false, type = "boolean"})
 
     if has_config("asan") then
         add_defines("FL_WITH_LSAN")
@@ -37,7 +37,7 @@ package("flashlightengine")
     end
     
     -- Tsan
-    option("tsan", {description = "Enable thread sanitizer", default = false, type = "boolean"})
+    add_configs("tsan", {description = "Enable thread sanitizer", default = false, type = "boolean"})
 
     if has_config("asan") then
         add_defines("FL_WITH_TSAN")
