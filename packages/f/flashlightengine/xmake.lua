@@ -6,7 +6,7 @@ package("flashlightengine")
 
     add_urls("https://github.com/FlashlightEngine/FlashlightEngine.git")
 
-    add_versions("2024.09.14", "cd965027ab2c630d12a7a7c838088f0906c66a97")
+    add_versions("2024.09.14", "4e3a12c752ea807e3b71f6fdf7ca404623a07b5e")
 
     add_deps("flutils", 
              "spdlog v1.9.0",
