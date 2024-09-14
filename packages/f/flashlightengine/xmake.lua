@@ -33,11 +33,11 @@ package("flashlightengine")
         local configs = {}
         configs.override_runtime = false
 
-        if has_config("shared") then
+        if package:config("shared") then
             configs.static = false
         end
 
-        if has_config("optick") then
+        if package:config("optick") then
             configs.optick = true
         end
         
@@ -48,6 +48,18 @@ package("flashlightengine")
         else
             configs.mode = "release"
         end
-        
+
+        if package:config("asan") then
+            configs.asan = true
+        end
+
+        if package:config("tsan") then
+            configs.tsan = true
+        end
+
+        if package:config("lsan") then
+            configs.lsan = true
+        end
+
         import("package.tools.xmake").install(package, configs)
     end)
